@@ -20,7 +20,7 @@ pipeline {
             post {
                 always {
                     // Send notification email with Unit and Integration Tests results and logs as attachment
-                    emailext to: "csrusso13@gmail.com
+                    emailext to: "csrusso13@gmail.com"
                         subject: "Unit and Integration Tests: ${TESTING_ENVIRONMENT}",
                         body: "See attached log file for more details from CRussoDeakin.",
                         attachLog: true      
@@ -43,7 +43,7 @@ pipeline {
             post {
                 always {
                     // Send notification email with Unit and Integration Tests results and logs as attachment
-                    emailext to: "csrusso13@gmail.com
+                    emailext to: "csrusso13@gmail.com"
                         subject: "Security Scan: ${TESTING_ENVIRONMENT}",
                         body: "See attached log file for more details from CRussoDeakin.",
                         attachLog: true                      
