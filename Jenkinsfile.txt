@@ -14,7 +14,18 @@ pipeline {
                 // Run integration tests using Selenium.
                 echo 'mvn integration-test'
             }
-        }
+            post {
+                always {
+                    // Send notification email with Unit and Integration Tests results and logs as attachment
+                    emailext (
+                        subject: "Unit and Integration Tests: ${currentBuild.result}",
+                        body: "See attached log file for more details from CRussoDeakin.",
+                        attachmentsPattern: '**/*.log',
+                        to: 'csrusso13@gmail.com'        
+                    }
+                }
+            }
+        }        
         stage("Code Analysis") {
             steps {
                 // Integrate a code analysis tool to analyse the code and ensure it meets industry standards.
@@ -27,7 +38,18 @@ pipeline {
                 // Perform a security scan on the code using Snyk.
                 echo 'snyk test'
             }
-        }        
+            post {
+                always {
+                    // Send notification email with Unit and Integration Tests results and logs as attachment
+                    emailext (
+                        subject: "Security Scan: ${currentBuild.result}",
+                        body: "See attached log file for more details from CRussoDeakin.",
+                        attachmentsPattern: '**/*.log',
+                        to: 'csrusso13@gmail.com'        
+                    }
+                }
+            }
+        }         
         stage("Deploy to Staging") {
             steps {
                 // Deploy the application to a staging server using AWS EC2 instance.
