@@ -22,7 +22,7 @@ pipeline {
                         body: "See attached log file for more details from CRussoDeakin.",
                         attachmentsPattern: '**/*.log',
                         to: 'csrusso13@gmail.com'        
-                    }
+                    )
                 }
             }
         }        
@@ -46,7 +46,7 @@ pipeline {
                         body: "See attached log file for more details from CRussoDeakin.",
                         attachmentsPattern: '**/*.log',
                         to: 'csrusso13@gmail.com'        
-                    }
+                    )
                 }
             }
         }         
