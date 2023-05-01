@@ -21,7 +21,7 @@ pipeline {
                         subject: "Unit and Integration Tests: ${currentBuild.result}",
                         body: "See attached log file for more details from CRussoDeakin.",
                         attachmentsPattern: '**/*.log',
-                        to: 'csrusso13@gmail.com'        
+                        mail to: 'csrusso13@gmail.com'        
                     )
                 }
             }
@@ -45,7 +45,7 @@ pipeline {
                         subject: "Security Scan: ${currentBuild.result}",
                         body: "See attached log file for more details from CRussoDeakin.",
                         attachmentsPattern: '**/*.log',
-                        to: 'csrusso13@gmail.com'        
+                        mail to: 'csrusso13@gmail.com'        
                     )
                 }
             }
