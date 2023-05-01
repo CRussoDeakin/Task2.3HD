@@ -23,7 +23,7 @@ pipeline {
                     emailext (
                         subject: "Unit and Integration Tests: ${TESTING_ENVIRONMENT}",
                         body: "See attached log file for more details from CRussoDeakin.",
-                        attachmentsPattern: '**/*.log',
+                        attachmentsPattern: 'target/report/unit-integration-test.txt',
                         to: 'csrusso13@gmail.com'        
                     )
                 }
@@ -47,7 +47,7 @@ pipeline {
                     emailext (
                         subject: "Security Scan: ${TESTING_ENVIRONMENT}",
                         body: "See attached log file for more details from CRussoDeakin.",
-                        attachmentsPattern: '**/*.log',
+                        attachmentsPattern: 'target/report/unit-integration-test.txt',
                         to: 'csrusso13@gmail.com'        
                     )
                 }
