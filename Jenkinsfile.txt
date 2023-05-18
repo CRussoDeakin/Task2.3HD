@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        TESTING_ENVIRONMENT = "TASK6.2C-CRUSSODeakin"
+        TESTING_ENVIRONMENT = "TASK6.2C-CRUSSO"
     }
     stages {
         stage("Build") {
