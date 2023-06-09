@@ -10,7 +10,7 @@ pipeline {
                 echo 'mvn clean package'
             }
         }
-        stage("Unit and Integration Tests") {
+        stage("Test") {
             steps {
                 // Run unit tests using JUnit.
                 echo 'mvn test'
@@ -18,7 +18,7 @@ pipeline {
                 echo 'mvn integration-test'
             }
         }        
-        stage("Code Analysis") {
+        stage("SonarQube Analysis") {
             steps {
                 // Integrate a code analysis tool to analyse the code and ensure it meets industry standards.
                 // Use Jenkins plugin for SonarQube.
@@ -31,7 +31,7 @@ pipeline {
                 echo 'snyk test'
             }
         }         
-        stage("Deploy to Staging") {
+        stage("Deploy to AWS") {
             steps {
                 // Deploy the application to a staging server using AWS EC2 instance.
                 echo 'aws s3 sync ./dist s3://CRussoDeakin-staging-bucket'
@@ -43,7 +43,7 @@ pipeline {
                 echo 'mvn integration-test -Denv=staging'
             }
         }
-        stage("Deploy to Production") {
+        stage("Deploy to AWS CodeDeploy") {
             steps {
                 // Deploy the application to production using AWS EC2 instance.
                 echo 'aws s3 sync ./dist s3://CRussoDeakin-production-bucket'
