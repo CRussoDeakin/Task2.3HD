@@ -1,9 +1,16 @@
 pipeline {
     agent any
-    environment {
-        TESTING_ENVIRONMENT = "TASK2.3HD-CRUSSO"
-    }
+    
+    tools {nodejs "node"}
+    
     stages {
+    
+    stage("Git") {
+        steps {
+          git 'https://github.com/CRussoDeakin/Task2.3HD.git'
+        }  
+    }
+    
         stage("Build") {
             steps {
                 // Build the code using Maven to compile and package the code.
@@ -14,7 +21,7 @@ pipeline {
             steps {
                 // Run unit tests using JUnit.
                 echo 'mvn test'
-                // Run integration tests using Selenium.
+                // Run tests using Selenium.
                 echo 'mvn integration-test'
             }
         }        
@@ -25,19 +32,13 @@ pipeline {
                 echo 'mvn sonar:sonar'
             }    
         }
-        stage("Security Scan") {
-            steps {
-                // Perform a security scan on the code using Snyk.
-                echo 'snyk test'
-            }
-        }         
-        stage("Deploy to AWS") {
+        stage("Deploy to AWS staging server") {
             steps {
                 // Deploy the application to a staging server using AWS EC2 instance.
                 echo 'aws s3 sync ./dist s3://CRussoDeakin-staging-bucket'
             }
         }
-        stage("Integration Tests on Staging") {
+        stage("Selenium test") {
             steps {
                 // Run integration tests on the staging server using Selenium.
                 echo 'mvn integration-test -Denv=staging'
