@@ -1,14 +1,9 @@
 pipeline {
     agent any
-      
-    stages {
-    
-    stage("Git") {
-        steps {
-          git 'https://github.com/CRussoDeakin/Task2.3HD.git'
-        }  
+    environment {
+        TESTING_ENVIRONMENT = "TASK2.3HD-CRUSSO"
     }
-    
+    stages {
         stage("Build") {
             steps {
                 // Build the code using Maven to compile and package the code.
